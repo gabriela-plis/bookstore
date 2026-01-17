@@ -1,4 +1,4 @@
-FROM openjdk:19-oracle
+FROM eclipse-temurin:21-alpine-3.23
 VOLUME /tmp
 COPY build/libs/*.jar app.jar
 EXPOSE 8080
