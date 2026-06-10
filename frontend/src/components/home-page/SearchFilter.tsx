@@ -7,15 +7,15 @@ import { useRef } from "react";
 type SearchFilterProps = {
     setSearchingCriteria: React.Dispatch<React.SetStateAction<BookSortingCriteria>>
     handleSearch: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
-    handleReset: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, ref: React.RefObject<HTMLFormElement>) => void
+    handleReset: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, ref: React.RefObject<HTMLFormElement | null>) => void
 }
 
 const SearchFilter = (props: SearchFilterProps) => {
     const {setSearchingCriteria, handleReset, handleSearch} = {...props}
 
-    const formRef = useRef<HTMLFormElement>(null);
+    const formRef = useRef<HTMLFormElement>(null) as React.RefObject<HTMLFormElement | null>;
 
-    return ( 
+    return (
         <section className="filter">
             <div className="filter__wrapper">
             <h3 className="filter__title">FILTER</h3>
@@ -24,7 +24,7 @@ const SearchFilter = (props: SearchFilterProps) => {
                 <PublishYearSection setSearchingCriteria={setSearchingCriteria} />
                 <section className="filter__button-container">
                     <button className="btn btn--greater" onClick={(e) => handleSearch(e)}>Search</button>
-                    <button className="btn btn--greater" onClick={(e) => handleReset(e, formRef)}>Reset</button>
+                    <button className="btn btn--greater" onClick={(e) => handleReset(e, formRef as React.RefObject<HTMLFormElement | null>)}>Reset</button>
                 </section>
             </form>
             </div>

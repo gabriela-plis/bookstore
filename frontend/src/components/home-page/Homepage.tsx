@@ -43,8 +43,8 @@ const Homepage = (props: Props) => {
             setUrl(appendParamsToUrl(BOOKS_URL+'/criteria', new Map(Object.entries(searchingCriteria))))
         }
     }
-    
-    const handleReset = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, ref: React.RefObject<HTMLFormElement>) => {
+
+    const handleReset = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, ref: React.RefObject<HTMLFormElement | null>) => {
         e.preventDefault()
         ref.current?.reset()
         setSearchingCriteria(initialSearchingCriteria)
