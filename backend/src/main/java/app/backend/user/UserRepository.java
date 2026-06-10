@@ -7,14 +7,11 @@ import java.util.Optional;
 
 public interface UserRepository extends ListCrudRepository<UserEntity, Integer> {
 
-    @Query(
-        value = """
-                SELECT *
-                FROM users u
-                WHERE u.email = :email
-            """,
-        nativeQuery = true
-    )
+    @Query("""
+            SELECT u FROM UserEntity u
+            LEFT JOIN FETCH u.roles
+            WHERE u.email = :email
+        """)
     Optional<UserEntity> findByEmail(String email);
 
 }

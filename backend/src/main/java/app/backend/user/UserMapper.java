@@ -14,11 +14,6 @@ public interface UserMapper {
 
     List<UserDTO> toDTOs(List<UserEntity> userEntities);
 
-    @Mapping(target = "password", ignore = true)
-    @Mapping(target = "roles", expression = "java(new ArrayList<RoleEntity>())")
-    @Mapping(target = "books", expression = "java(new ArrayList<BookEntity>())")
-    UserEntity toEntity(UserDTO user);
-
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "roles", expression = "java(new ArrayList<RoleEntity>())")
     @Mapping(target = "books", expression = "java(new ArrayList<BookEntity>())")
